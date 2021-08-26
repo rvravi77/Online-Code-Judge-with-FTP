@@ -20,3 +20,44 @@ The code also supports the follwing commands of FTP:
 * QUIT : This command terminates a USER and if file transfer is not in progress , the server closes the control connection.
 * DELE : This command deletes a file in the current directory of server.
 * CODEJUD : This command will take a c/c++ file from client and server will compile , execute and match the output with given test cases and will notify back to client about any error or correctness of c/c++ file.
+
+### Possible error case considered :
+
+CODEJUD - 
+                   1. Overwritten already present code (c or c++) file because it could hinder with input and testcase format files.
+                   2. If some error in storing the file then loop breaks.
+                   3. Object file names as filename_clientNo so no client would overwite others object file.
+                   4. If error in compilation then loop breaks , deleting code( c or c++) file.
+                   5. Created temporary file for storing each testcase input line and passing for input redirection.
+                   6. Passed timeout value for running to avoid falling in infinite loops.
+                   7. Kept flag for timeout/runtime error .
+                   8. Output redirection done in append mode.
+                   9. Output filename named as output_filename_CNo.txt to avois hinderence with other client output file for same code filename.
+                   10. Handled case for code requiring input file and code not requiring it.
+                   11. If either timeout or runtime error ocours then loop breaks , deleting the code file, object file.
+                   12. Due to formatting issue of \r\n and for simplicity ,Matched output and testcase file using linux command "awk" and rediredted output to an temporary file in which every line contains boolean value for matched(1) and not matched(0) testcase. 
+                   13.Checked for any zero and if there exists then all testcases not passed .
+                   14.Removed code file, object file and all temporary files so that it did'nt hinder with other client's files.
+RETR-  
+            1. When already same named file exists then saved by appending one("1") at the end much like the file downloading program does. 
+            2. Error when a file does'nt exist .(prompt to enter new command)
+            3. Error while transfering file.        (sendfile return -1)
+            4. Error while saving in client side. (write returns -1)
+            5. Open file in O_RDONLY mode at server side
+            6. Open with O_CREAT | O_EXCL | O_WRONLY mode at client side to create a file
+STOR-       1. When already same named file exists then saved by appending one("1") at the end much like the file         downloading program does. 
+            2. Error when a file does'nt exist .(prompt to enter new command)
+            3. Error while transfering file.        (sendfile return -1)
+            4. Error while saving in server side. (write returns -1)
+            5. Open file in O_RDONLY mode at client side
+            6. Open with O_CREAT | O_EXCL | O_WRONLY mode at server side to create a file
+
+LIST-       In case of 'ls' command, it would create a temporary file and then transfers it to client . 
+           So used readdir from <dirent.h> to get all files names using infinite while loop and append in string.
+
+QUIT- Simply checked for any file transfer and close the connection with the client.
+
+DELE- 1. Open file in O_RDONLY to check does file exists.
+           2. Used the system call to remove the desired file
+           3. Prompt at client side to confirm deletion .
+_____________________________________________________________________
