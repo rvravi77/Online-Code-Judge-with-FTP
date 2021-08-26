@@ -89,7 +89,7 @@ CODEJUD <filename>.<c/c++>
 Note: Open atleast two terminal window with current directory as server and one as client. There must only one server running on a PORT but there can be multiple clients requesting a server.
 
 * Compilation command for server :  gcc server.c -o server -lm
-* Running command for server :   ./server PORT  ( ex ./server 1001)
+  Running command for server :   ./server PORT  ( ex ./server 1001)
 
 * Compilation command for client :  gcc client.c -o client 
-* Running command for client :   ./client 127.0.0.1 PORT
+  Running command for client :   ./client 127.0.0.1 PORT
