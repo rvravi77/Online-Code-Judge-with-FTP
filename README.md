@@ -1,4 +1,9 @@
 # Online-Code-Judge-with-FTP
+### Some resources to get started with socket prgramming
+* Socket Programming in C/C++ : https://www.geeksforgeeks.org/socket-programming-cc/
+* Tutorial : https://www.youtube.com/watch?v=LtXEMwSG5-8
+* Handling multiple clients : https://www.geeksforgeeks.org/socket-programming-in-cc-handling-multiple-clients-on-server-without-multi-threading/
+
 ### Description
 
 Designed a **OJ**( Online judger) that takes codes , compile it, check for compilation errors, execute your code by providing some secret inputs and collect your code's output, check for  errors , and finally match your output with its hidden test outputs ans displays the result.
