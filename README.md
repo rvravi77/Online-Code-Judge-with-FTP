@@ -23,7 +23,8 @@ The code also supports the follwing commands of FTP:
 
 ### Possible error case considered :
 
-CODEJUD - 
+#### CODEJUD - 
+
 1. Overwritten already present code (c or c++) file because it could hinder with input and testcase format files.
 2. If some error in storing the file then loop breaks.
 3. Object file names as filename_clientNo so no client would overwite others object file.
@@ -38,14 +39,18 @@ CODEJUD -
 12. Due to formatting issue of \r\n and for simplicity ,Matched output and testcase file using linux command "awk" and rediredted output to an temporary file in which every line contains boolean value for matched(1) and not matched(0) testcase.
 13. Checked for any zero and if there exists then all testcases not passed .
 14. Removed code file, object file and all temporary files so that it did'nt hinder with other client's files.
-RETR-  
+
+#### RETR-  
+
 1. When already same named file exists then saved by appending one("1") at the end much like the file downloading program does. 
 2. Error when a file does'nt exist .(prompt to enter new command)
 3. Error while transfering file.        (sendfile return -1)
 4. Error while saving in client side. (write returns -1)
 5. Open file in O_RDONLY mode at server side
-6. Open with O_CREAT | O_EXCL | O_WRONLY mode at client side to create a file
-STOR-       
+6. Open with O_CREAT | O_EXCL | O_WRONLY mode at client side to create a file.
+
+#### STOR-       
+
 1. When already same named file exists then saved by appending one("1") at the end much like the file         downloading program does. 
 2. Error when a file does'nt exist .(prompt to enter new command)
 3. Error while transfering file.        (sendfile return -1)
@@ -53,13 +58,13 @@ STOR-
 5. Open file in O_RDONLY mode at client side
 6. Open with O_CREAT | O_EXCL | O_WRONLY mode at server side to create a file
 
-LIST-       
+#### LIST-
 1. In case of 'ls' command, it would create a temporary file and then transfers it to client . So used readdir from <dirent.h> to get all files names using infinite while loop and append in string.
 
-QUIT- 
+#### QUIT- 
 1. Simply checked for any file transfer and close the connection with the client.
 
-DELE- 
+#### DELE- 
 1. Open file in O_RDONLY to check does file exists.
 2. Used the system call to remove the desired file
 3. Prompt at client side to confirm deletion .
