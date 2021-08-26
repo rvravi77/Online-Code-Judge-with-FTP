@@ -1,6 +1,4 @@
-//Roll no :20CS60R60
-//Name : Ravi Pratap Singh
-//A4
+//Author Name : Ravi Pratap Singh
 //Compilation command for server :  gcc server.c -o server
 //Running command for server :      ./server PORT
 

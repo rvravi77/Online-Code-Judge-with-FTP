@@ -1,6 +1,4 @@
-//Roll no :20CS60R60
-//Name : Ravi Pratap Singh
-//A4
+//Author Name : Ravi Pratap Singh
 //Compilation command for client :  gcc client.c -o client 
 //Running command for client :   ./client 127.0.0.1 PORT
 
