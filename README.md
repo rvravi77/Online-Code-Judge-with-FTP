@@ -3,6 +3,7 @@
 * Socket Programming in C/C++ : https://www.geeksforgeeks.org/socket-programming-cc/
 * Tutorial : https://www.youtube.com/watch?v=LtXEMwSG5-8
 * Handling multiple clients : https://www.geeksforgeeks.org/socket-programming-in-cc-handling-multiple-clients-on-server-without-multi-threading/
+* What is FTP ?  : https://www.geeksforgeeks.org/file-transfer-protocol-ftp-in-application-layer/
 
 ### Description
 
@@ -69,3 +70,25 @@ The code also supports the follwing commands of FTP:
 2. Used the system call to remove the desired file
 3. Prompt at client side to confirm deletion .
 _____________________________________________________________________
+
+### Instructions to run the code
+To judge any file using "CODEJUD" command there must be these files at server side(the current directory where code is run) to match output for that program :
+1. input_testcaseno.txt (from where the server takes data for code).
+2. testcae_testcaseno.txt ( to match the output file with this).
+
+At client side there must be a files(saved) , named as testcaseno.<c/cpp> . 
+Sample commands :
+RETR <filename>
+STOR <filename>
+LIST
+QUIT
+DELE <filename>
+CODEJUD <filename>.<c/c++>
+
+#### Command to run the code (on linux kernal):
+Note: Open atleast two terminal window with current directory as server and one as client. There must only one server running on a PORT but there can be multiple clients requesting a server.
+Compilation command for server :  gcc server.c -o server -lm
+Running command for server :   ./server PORT  ( ex ./server 1001)
+
+Compilation command for client :  gcc client.c -o client 
+Running command for client :   ./client 127.0.0.1 PORT
